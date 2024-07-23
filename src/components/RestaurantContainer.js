@@ -1,15 +1,16 @@
 import ResCards from "./ResCards";
-import resList from "../utils/restaurantList";
 
-const RestaurantContainer = () => (
+
+const RestaurantContainer = (props) => {
+    const {resData} = props;
+    return (
     <div className="res-container">
         {
-            resList.map((restaurantData) => (
+            resData.map((restaurantData) => (
                 <ResCards key={restaurantData.info.id} resInfo={restaurantData}/>
             ))
         }
-        
     </div>
-)
+)}
 
 export default RestaurantContainer;
