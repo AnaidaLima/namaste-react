@@ -1,3 +1,83 @@
-#heading {
-    color:red;
+.swiggyApp {
+    width:1200px;
+    margin: 0 auto;
+    background-color: aliceblue;
+}
+
+.heading {
+    display: flex;
+    justify-content: space-between;
+    width: 900px;
+    margin: 0 auto;
+    background-color: wheat;
+}
+
+.logo-container img{
+    width:100px;
+    height:100px;
+}
+
+.footer-nav ul{
+    width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: wheat;
+}
+
+.footer-nav ul li {
+    list-style-type: none;
+    padding: 10px;
+}
+
+.nav-items ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-items ul li {
+    list-style-type: none;
+    padding: 10px;
+}
+
+.search-container {
+    width: 600px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.search-container input{
+    width: 400px;
+}
+
+.body-container {
+    height: 900px;
+}
+
+.res-container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 800px;
+    overflow: auto;
+    margin: 0 auto;
+}
+
+.res-card {
+    flex:1 1 250px;
+    /* max-width: 220px; */
+    margin:10px;
+    border: 1px solid darkgrey;
+}
+
+.res-card:hover {
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.res-card img {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    height: 100px;
 }
