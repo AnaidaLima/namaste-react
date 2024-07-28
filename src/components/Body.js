@@ -8,6 +8,8 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
     const [listOfResto, setResListss] = useState([])
+    const [filteredData, setFilteredData] = useState([]);
+    const [searchData, setSearchData] = useState("");
 
     useEffect(() => {
         fetchData();
@@ -17,26 +19,31 @@ const Body = () => {
         const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.96340&lng=77.58550&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
         const result = await data.json();
         setResListss(result?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilteredData(result?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
     }
 
-    if(listOfResto.length === 0) {
+    if(filteredData.length === 0) {
         return <Shimmer/>
     }
 
     return (
     <div className="body-container">
-        <Search/>
+        <Search searchStr={[searchData, setSearchData]} lisData={[listOfResto, setResListss]} filData={[filteredData, setFilteredData]}/>
         <div className="filter">
             <button onClick={() => {
-                let resss = listOfResto.filter(res=>res.info.avgRating > 4.5);
-                setResListss(resss);
+                if(listOfResto.length !== filteredData.length) {
+                    setFilteredData(listOfResto);
+                    return;
+                }
+                let resss = listOfResto.filter(res=>res.info.avgRating > 4.2);
+                setFilteredData(resss);
             }}>
                 Top Res - Easy
             </button>
         </div>
-        <Filter resData={[listOfResto, setResListss]}/>
-        <RestaurantContainer resData={listOfResto}/>
+        {<Filter filData={[filteredData, setFilteredData]} resData={[listOfResto, setResListss]}/>}
+        <RestaurantContainer resData={filteredData}/>
     </div>
 )};
 
