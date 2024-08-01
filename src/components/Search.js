@@ -1,5 +1,4 @@
 const Search = (props) => {
-    console.log(props);
     const {searchStr, lisData, filData} = props;
     return (
     <div className="search-container">
